@@ -4,34 +4,36 @@ import viteLogo from '/vite.svg'
 import './App.css'
 
 export default function App() {
-  const[userInput,setUserInput]=useState('');
+  const[input,setInput]=useState('');
+  const[isLeap,setIsLeap]=useState('');
 
-  useEffect(()=>{
-    const latest = localStorage.getItem('inputData')
-    if(latest){
-      setUserInput(latest);
+  const findLeap =()=>{
+    if( input%100 == 0 && input%400 == 0){
+      setIsLeap('Leap year');
+     
     }
-  },[]);
-
-  useEffect(()=>{
-    localStorage.setItem('inputData',userInput);
-  },[userInput]);
-
-  const relodePage = ()=>{
-    window.location.reload();
+    else if(input%4 == 0 && input%100 != 0){
+      setIsLeap('Leap year');
+     
+    }
+    else{
+    setIsLeap('Not a leap year');
+      
+    }
+   
   }
-
-
-
 
 
   return(
     <div>
-      <h1>for store last user input</h1>
-      <input onChange={(e)=>setUserInput(e.target.value)} type="text" defaultValue={userInput} placeholder='enter a value' />
-      <button onClick={relodePage }>relode page</button>
-    </div>
-  )
+      <h1>finding leap year</h1>
+      <input type="text" onChange={(e)=>setInput(e.target.value)} placeholder='enter a year' />
+      <button onClick={findLeap}>Check year</button>
+      {
+        isLeap && <h3>{input} is  {isLeap}</h3>
 
-  
+      }
+      
+      </div>
+  )
 }
