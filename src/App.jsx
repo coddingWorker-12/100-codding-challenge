@@ -6,25 +6,17 @@ import ProgressBar from './ProgressBar'
 
 
 export default function App(){
-  const[ isTrue,setIsTrue]=useState(false);
-
-  const selectAll= ()=>{
-    setIsTrue(!isTrue)
+  let amount = 12345;
+  const formateMoney = ()=>{
+   const sigh = amount <0 ? '-' : "";
+   const fixAmount = Math.abs(amount);
+  const format = fixAmount.toLocaleString("en-us",{
+    minimumFractionDigits : 2,
+    maximumFractionDigits : 2
+  });
+  const formatedAmount = `${sigh}$${format}`;
+  console.log(formatedAmount);
+  
   }
-
-  return(
-    <div>
-      <input type="checkbox"  checked={isTrue} value="HTML"/>
-      <label htmlFor="HTML">HTML</label>
-      <br /><br />
-       <input type="checkbox"  checked={isTrue} value="CSS"/>
-      <label htmlFor="CSS">CSS</label>
-      <br /><br />
-       <input type="checkbox"  checked={isTrue} value="JS"/>
-      <label htmlFor="JS">JS</label>
-      <br /><br />
-      <button onClick={selectAll}>select all</button>
-
-      </div>
-  )
+  formateMoney();
 }
