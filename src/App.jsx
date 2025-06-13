@@ -6,23 +6,25 @@ import ProgressBar from './ProgressBar'
 
 
 export default function App(){
-  const[percent,setPercent]=useState();
-   const[ispercent,setIsPercent]=useState();
+  const[ isTrue,setIsTrue]=useState(false);
 
-  const ChangeColor= (e)=>setPercent(e.target.value);
-  const handelColor =()=>{
-    setIsPercent(percent);
+  const selectAll= ()=>{
+    setIsTrue(!isTrue)
   }
 
   return(
-    <div style={{backgroundColor:"lightgrey",width:"100vw",height:"100vh"}}>
-      <div>
-        <ProgressBar ispercent = {ispercent}/>
+    <div>
+      <input type="checkbox"  checked={isTrue} value="HTML"/>
+      <label htmlFor="HTML">HTML</label>
+      <br /><br />
+       <input type="checkbox"  checked={isTrue} value="CSS"/>
+      <label htmlFor="CSS">CSS</label>
+      <br /><br />
+       <input type="checkbox"  checked={isTrue} value="JS"/>
+      <label htmlFor="JS">JS</label>
+      <br /><br />
+      <button onClick={selectAll}>select all</button>
+
       </div>
-      <div>
-        <input type="text" onChange={ChangeColor} placeholder='enter parcentage' />
-        <button onClick={handelColor}>change color</button>
-      </div>
-    </div>
   )
 }
