@@ -6,17 +6,21 @@ import ProgressBar from './ProgressBar'
 
 
 export default function App(){
-let users = [
-  { name: 'John', age: 15 },
-  { name: 'Jane', age: 20 },
-  { name: 'Bob', age: 25 },
-];
-const findUser = ()=>{
- 
- const  user = users.find(user => user.age >= 18);
-  console.log(user);
-  
+let arr = [1, 2, 3, 4];
+const [isFound, setIsFound] = useState(false);
+const isInArray = (array,value)=>{
+ const item = array.find(item => item === value);
+ setIsFound(!!item);
 }
-findUser();
+useEffect(()=>{
+  isInArray(arr,6);
+},[]);
+return(
+  <div>
+    {
+      isFound?<h1>true</h1>:<h1>false</h1>
+    }
+  </div>
+)
 
 }
