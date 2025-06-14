@@ -6,17 +6,17 @@ import ProgressBar from './ProgressBar'
 
 
 export default function App(){
-  let amount = 12345;
-  const formateMoney = ()=>{
-   const sigh = amount <0 ? '-' : "";
-   const fixAmount = Math.abs(amount);
-  const format = fixAmount.toLocaleString("en-us",{
-    minimumFractionDigits : 2,
-    maximumFractionDigits : 2
-  });
-  const formatedAmount = `${sigh}$${format}`;
-  console.log(formatedAmount);
+let users = [
+  { name: 'John', age: 15 },
+  { name: 'Jane', age: 20 },
+  { name: 'Bob', age: 25 },
+];
+const findUser = ()=>{
+ 
+ const  user = users.find(user => user.age >= 18);
+  console.log(user);
   
-  }
-  formateMoney();
+}
+findUser();
+
 }
