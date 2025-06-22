@@ -7,24 +7,22 @@ import ProgressBar from './ProgressBar'
 
 export default function App(){ 
 
-   const user = {
-  firstName: 'John',
- 
-  lastName: 'Doe'
+  let  arr = ['orange', 'apple', 'banana', 'pear'];
+  let str = 'banana';
+
+  
+
+  function sortStrings(array) {
+  for(let i = 0;i<array.length;i++){
+    array[i] =  array[i].split('').sort().join('');
+    
+  }
+  
+  console.log(array);
 }
 
-const intialValue = (user)=>{
-  if(user.firstName && user.midelName && user.lastName){
-    console.log(user.firstName[0],user.middleName[0],user.lastName[0]);
+sortStrings(arr);
 
-  }
-  else if(user.firstName && user.lastName){
-    console.log(user.firstName[0],user.lastName[0]);
-  }
-  else{
-    console.log(user.firstName[0])
-  }
-}
 
-intialValue(user);
+
 }
